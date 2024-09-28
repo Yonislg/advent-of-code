@@ -1,6 +1,6 @@
 import re
 f = [
-    'two1nine',
+    'two1ninetwo',
 'eightwothree',
 'abcone2threexyz',
 'xtwone3four',
@@ -38,12 +38,12 @@ for row in f:
         if row[i].isdigit():
             print(row[i])
             break
-        else:
-            for b in range(i-2,i-6,-1):
-                if (i == -1):
+        elif i < - 2:
+            for b in range(i,i-4,-1):
+                if (i + 3 == 0):
                     a = cipherize(row[b:])
                 else:
-                    a = cipherize(row[b:i+1])
+                    a = cipherize(row[b:i+3])
                 if a.isdigit():
                     print(a)
                     break
