@@ -25,14 +25,30 @@ for row in f:
         if row[i].isdigit():
             print(row[i])
             break
-        else:
-            for b in range(i+2,i+6):
-                a = cipherize(row[i:b])
+        elif i > 1:
+            for b in range(i,i+4):
+                a = cipherize(row[i-2:b])
                 if a.isdigit():
                     print(a)
-                    print(i,b)
                     break
             if a.isdigit():
                 break
+
+    for i in range(-1,-len(row),-1):
+        if row[i].isdigit():
+            print(row[i])
+            break
+        else:
+            for b in range(i-2,i-6,-1):
+                if (i == -1):
+                    a = cipherize(row[b:])
+                else:
+                    a = cipherize(row[b:i+1])
+                if a.isdigit():
+                    print(a)
+                    break
+            if a.isdigit():
+                break
+   
 
             
