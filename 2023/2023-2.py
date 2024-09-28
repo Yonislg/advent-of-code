@@ -1,13 +1,16 @@
 import re
-f = [
-    'two1nine',
-'eightwothree',
-'abcone2threexyz',
-'xtwone3four',
-'4nineeightseven2',
-'zoneight234',
-'7pqrstsixteen'
-]
+
+f = open('2023/2023-1-input.txt','r')
+
+# f = [
+#     'two1nine',
+# 'eightwothree',
+# 'abcone2threexyz',
+# 'xtwone3four',
+# '4nineeightseven2',
+# 'zoneight234',
+# '7pqrstsixteen'
+# ]
 
 def cipherize(line):
     nums = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
@@ -25,7 +28,11 @@ for row in f:
             dec = row[i]
             break
         elif i > 1:
-            for b in range(i,i+4):
+            if i + 4 > len(row):
+                c = len(row)
+            else:
+                c = i + 4 
+            for b in range(i,c):
                 a = cipherize(row[i-2:b])
                 if a.isdigit():
                     dec = a
@@ -35,12 +42,16 @@ for row in f:
 
     ans += int(dec)*10
 
-    for i in range(-1,-len(row),-1):
+    for i in range(-1,-len(row)-1,-1):
         if row[i].isdigit():
             sing = row[i]
             break
         elif i < - 2:
-            for b in range(i,i-4,-1):
+            if i - 4 < -len(row):
+                c = -len(row)
+            else:
+                c = i - 4
+            for b in range(i,c,-1):
                 if (i + 3 == 0):
                     a = cipherize(row[b:])
                 else:
@@ -51,7 +62,8 @@ for row in f:
                 sing = a
                 break
     ans += int(sing)
+    # print(dec+sing)
 
 print(ans)
 
-            
+f.close()
