@@ -1,4 +1,4 @@
-f = open('2023/2023-1-input.txt','r')
+f = open('2023/Day-1/2023-1-input.txt','r')
 
 # f = ['1abc2',
 # 'pqr3stu8vwx',
