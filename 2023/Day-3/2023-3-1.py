@@ -30,8 +30,7 @@ def checkrows(row1, row2, row3):
 
 symb = ['#', '$', '%', '&', '*', '+', '-', '/', '=', '@']
 symb_test = [symbolfinder(it) for it in symb]
-numz = []
-blurb = []
+
 f = open('2023/Day-3/2023-3-input.txt','r')
 example = f.read().split('\n')
 h = len(example)
