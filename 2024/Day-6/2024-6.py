@@ -75,8 +75,6 @@ def explorev2(position, direction, guards, length):
         prev_direction = copy.copy(direction)
         position, direction = advance(position, direction,guards)
         if direction != prev_direction:
-            # print(past_turns)
-            # print((tuple(position), tuple(direction)) in past_turns)
             if (tuple(position), tuple(direction)) in past_turns:
                 return True
             past_turns.append((tuple(position), tuple(direction)))
