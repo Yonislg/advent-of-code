@@ -31,13 +31,13 @@ def checksum(diskmap):
     for n in range(len(blocks)-1,-1,-1):
         block = blocks[n]
         potential = [space for space in empty if len(space) >= len(block)]
-        if len(potential)>0:
+        if len(potential)>0 and potential[0][0] < block[0]:
             for l in range(len(block)):
                 sum += n * potential[0][0]
                 potential[0].pop(0)
         else:
             for l in range(len(block)):
-                sum += n * int(block[l])   
+                sum += n * block[l]  
 
                   
             
