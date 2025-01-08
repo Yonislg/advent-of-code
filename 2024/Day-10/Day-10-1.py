@@ -34,12 +34,12 @@ def trailHeadCounter(maze):
             zeros.append((y,x))
 
     for zero in zeros:
-        sum += stepper('0',zero,maze)
+        sum += len(stepper('0',zero,maze,[]))
     return sum
         
 
             
-def stepper(val,pos,maze):
+def stepper(val,pos,maze, heads):
     dim1 = len(maze)
     dim2 = len(maze[0])
     sum = 0
@@ -54,12 +54,13 @@ def stepper(val,pos,maze):
                 # print(newpos)
                 if newval==next:
                     # print(newval)
-                    sum += stepper(newval,newpos,maze)
+                    stepper(newval,newpos,maze,heads)
                 else:
                     continue
     if (int(val)==9):
-        sum = 1
-    return sum
+        if pos not in heads:
+            heads.append(pos)
+    return heads
 
 for example in example1, example2, example3, example4, example5:
     print(trailHeadCounter(example))
