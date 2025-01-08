@@ -25,8 +25,6 @@ f5 = open('2024/Day-10/example5.txt','r')
 example5 = f5.read().split('\n')
 f5.close()
 
-
-
 def trailHeadCounter(maze):
     sum = 0
     zeros = []
@@ -36,14 +34,12 @@ def trailHeadCounter(maze):
             x,_ = match.span()
             # print(x,y)
             zeros.append((y,x))
-
     for zero in zeros:
-        sum += len(stepper('0',zero,maze,[]))
+        sum += stepper('0',zero,maze)
     return sum
         
-
             
-def stepper(val,pos,maze, heads):
+def stepper(val,pos,maze):
     dim1 = len(maze)
     dim2 = len(maze[0])
     sum = 0
@@ -58,14 +54,12 @@ def stepper(val,pos,maze, heads):
                 # print(newpos)
                 if newval==next:
                     # print(newval)
-                    stepper(newval,newpos,maze,heads)
+                    sum += stepper(newval,newpos,maze)
                 else:
                     continue
     if (int(val)==9):
-        if pos not in heads:
-            heads.append(pos)
-    return heads
-
+        sum = 1
+    return sum
 for example in example1, example2, example3, example4, example5:
     print(trailHeadCounter(example))
 
